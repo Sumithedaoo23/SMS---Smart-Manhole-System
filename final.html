@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Manhole System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="final.css">
+</head>
+<body>
+    <div class="login-container active">
+        <div class="login-card">
+            <h1>Welcome Back!</h1>
+            <p>Sign in to your account</p>
+            <form id="loginForm">
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email-input" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn btn-primary login-btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="dashboard-wrapper">
+        <aside class="sidebar" id="sidebar">
+            <button class="btn btn-logout" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            <div class="profile-header">
+                <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-avatar" id="profile-photo">
+                <div class="profile-info">
+                    <div class="profile-name" id="profile-name"></div>
+                    <div class="profile-location"><i class="fas fa-map-marker-alt"></i> <span id="profile-location"></span></div>
+                    <div class="profile-phone"><i class="fas fa-phone"></i> <span id="profile-phone"></span></div>
+                    <button class="btn btn-edit-profile" id="editProfileBtn"><i class="fas fa-edit"></i> Edit Profile</button>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="#" class="nav-item"><i class="fas fa-chart-bar"></i> Reports</a>
+                <a href="#" class="nav-item"><i class="fas fa-cog"></i> Settings</a>
+                <a href="#" class="nav-item"><i class="fas fa-info-circle"></i> Help</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <nav class="navbar">
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="navbar-title">SMS - Smart Manhole System</div>
+            </nav>
+
+            <div class="dashboard-content-area">
+                <header class="header-with-background">
+                    <h1>SMS - Smart Manhole System</h1>
+                    <p class="subtitle">Efficient waste management for cleaner communities</p>
+                </header>
+                
+                <div class="card tabs-card">
+                    <div class="tabs">
+                        <div class="tab active">Overview</div>
+                        <div class="tab">Devices</div>
+                        <div class="tab">Users</div>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <button class="btn btn-primary refresh-btn">
+                            <i class="fas fa-sync-alt"></i> Refresh Data
+                        </button>
+                        <button class="btn btn-outline add-btn" id="addGutterBtn">
+                            <i class="fas fa-plus"></i> Add Manhole
+                        </button>
+                        <button class="btn btn-secondary download-btn" id="downloadPdfBtn">
+                            <i class="fas fa-file-pdf"></i> Download Report
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="grid" id="gutterGrid">
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="addGutterModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn gutter-close-btn">&times;</span>
+            <h2>Add New Smart Manhole</h2>
+            <form id="addGutterForm">
+                <div class="input-group">
+                    <label for="gutter-name">Manhole Name</label>
+                    <input type="text" id="gutter-name" required>
+                </div>
+                <div class="input-group">
+                    <label for="gutter-address">Address</label>
+                    <input type="text" id="gutter-address" required>
+                </div>
+                <div class="input-group">
+                    <label for="gutter-ip">IP Address</label>
+                    <input type="text" id="gutter-ip" required>
+                </div>
+                <button type="submit" class="btn btn-primary add-submit-btn">Add Manhole</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="editProfileModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn profile-close-btn">&times;</span>
+            <h2>Edit Profile</h2>
+            <form id="editProfileForm">
+                <div class="profile-edit-photo-section">
+                    <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-avatar-large" id="edit-profile-photo-preview">
+                    <label for="upload-photo" class="btn btn-secondary upload-photo-btn">
+                        <i class="fas fa-camera"></i> Upload Photo
+                    </label>
+                    <input type="file" id="upload-photo" accept="image/*" style="display: none;">
+                </div>
+                <div class="input-group">
+                    <label for="edit-profile-name">Name</label>
+                    <input type="text" id="edit-profile-name" required>
+                </div>
+                <div class="input-group">
+                    <label for="edit-profile-location">Location</label>
+                    <input type="text" id="edit-profile-location" required>
+                </div>
+                <div class="input-group">
+                    <label for="edit-profile-phone">Phone Number</label>
+                    <input type="text" id="edit-profile-phone" required>
+                </div>
+                <button type="submit" class="btn btn-primary save-profile-btn">Save Changes</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="final.js"></script>
+</body>
+</html>
